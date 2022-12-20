@@ -96,7 +96,44 @@
 }
 ```
 
+### CacheUnit
+```js
+{
+  id: number = 0,
+  symbol: string = "123456",
+  skrot: string = "SZK 1",
+  nazwa: string = "Publiczna Szkoła nr 1 w Powiecie Wulkanowym"
+}
+```
+
+### Cache
+```js
+{
+  units: array<CacheUnit> = [CacheUnit],
+  linkst: array<null> = [null]
+  isStudent: boolean = true,
+  isParent: boolean = false,
+  isMenu: boolean = true,
+  isOffice365: boolean = ture,
+  isBetacomOn: boolean = ture,
+  isNadzorOn: boolean = true,
+  isUploadPhotosOn: boolean = false,
+  isZglaszanieNieobecnosciOn: boolean = false,
+  isPokazLekcjeZrealizowaneOn: boolean = false,
+  isPokazLekcjiZaplanowaneOn: boolean = false,
+  oneDriveClinetId: string = "00000000-0000-0000-0000-000000000000",
+  isOneDriveAttachmentsHomeworksOs: boolean = true,
+  isPodrecznikiOn: boolean = true
+}
+```
+
 ## Endpointy
+### `[GET] api/Cache`
+
+#### Response
+
+`Cache`
+
 ### `[GET] api/Context`
 
 Pobiera listę dzienników uczniów
