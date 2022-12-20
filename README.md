@@ -34,12 +34,90 @@
 }
 ```
 
+#### OcenyUstawienia
+```js
+{
+  isPunkty: boolean = false,
+  isSrednia: boolean = false,
+  isDorosli: boolean = false,
+  isOcenaOpisowa: boolean = false,
+  isOstatniOkresKlasyfikacyjny: boolean = false
+}
+```
+
+### OcenyPrzedmiot
+```js
+{
+  przedmiotNazwa: string = "Nazwa przedmiotu",
+  pozycja: number = 0,
+  nauczyciele: array<string> = ["Nazwisko Imię [NI]"]
+  ocenyCzastkowe: array<OcenaCzastkowa> = [OcenaCzastkowa]
+  egzaminFormaPraktyczna: null = null,
+  egzaminFormaUstna: null = null,
+  egzaminOcenaProponowana: null = null,
+  egzaminOcenaLaczna: null = null,
+  sumaPunktow: null = null,
+  srednia: number = 0,
+  proponowanaOcenaOkresowa: string = " ",
+  proponowanaOcenaOkresowaPunkty: null = null,
+  ocenaOkresowa: string = " ",
+  ocenaOkresowaPunkty: null = null,
+  podsumowanieOceny: null = null
+}
+```
+
+### OcenaCzastkowa
+```js
+{
+  wpis: string = "6 (komentarz)",
+  dataOceny: string = "01.01.1970",
+  kategoriaKolumny: string = "Kategoria kolumny",
+  nazwaKolumny: string = "Nazwa kolumny",
+  waga: number = 1.00,
+  kolorOceny: number = 0,
+  nauczyciel: string = "Nazwisko Imię [NI]",
+  zmienionaOdOstatniegoLogowania: boolean = false
+}
+```
+
+### OcenyResponse
+```js
+{
+  ocenyPrzedmioty: array<OcenyPrzedmiot> = [ocenyPrzedmiot],
+  ustawienia: OcenaUstawienia = OcenaUstawienia
+}
+```
+
+### OkresKlasyfikacyjny
+```js
+{
+  numerOkresu: number = 1,
+  id: number = 0
+}
+```
+
 ## Endpointy
-#### `[GET] api/Context`
+### `[GET] api/Context`
 
 Pobiera listę dzienników uczniów
 
 #### Response
 
-list[Dziennik]
+`array<Dziennik>`
+
+### `[GET] api/OkresyKlasyfikacyjne?idDziennik={idDziennika}`
+
+Pobiera listę okresów klasyfikacyjnych (semestrów) danego dziennika
+
+#### Response
+
+`array<OkresKlasyfikacyjny>`
+
+### `[GET] api/Oceny?key={keyDziennika}&idOkresKlasyfikacyjny={idOkresuKlasyfikacyjnego}`
+
+Pobiera oceny danego ucznia z danego dziennika
+
+#### Response
+
+`OcenyResponse`
 
