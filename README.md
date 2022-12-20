@@ -45,7 +45,7 @@
 }
 ```
 
-### OcenyPrzedmiot
+#### OcenyPrzedmiot
 ```js
 {
   przedmiotNazwa: string = "Nazwa przedmiotu",
@@ -66,7 +66,7 @@
 }
 ```
 
-### OcenaCzastkowa
+#### OcenaCzastkowa
 ```js
 {
   wpis: string = "6 (komentarz)",
@@ -80,7 +80,7 @@
 }
 ```
 
-### OcenyResponse
+#### OcenyResponse
 ```js
 {
   ocenyPrzedmioty: array<OcenyPrzedmiot> = [ocenyPrzedmiot],
@@ -88,7 +88,7 @@
 }
 ```
 
-### OkresKlasyfikacyjny
+#### OkresKlasyfikacyjny
 ```js
 {
   numerOkresu: number = 1,
@@ -96,7 +96,7 @@
 }
 ```
 
-### CacheUnit
+#### CacheUnit
 ```js
 {
   id: number = 0,
@@ -106,7 +106,7 @@
 }
 ```
 
-### Cache
+#### Cache
 ```js
 {
   units: array<CacheUnit> = [CacheUnit],
