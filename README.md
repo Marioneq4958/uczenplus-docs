@@ -1,12 +1,12 @@
 # API Vulcan UONET+ Uczeń+
 ## Modele
 #### Dziennik
-```js
+```ts
 {
   idDziennik: number = 0,
   rodzajDziennika: number = 1, // 0 - nieznany, 1 - dziennik ucznia, 2 - dziennik przedszkolaka, 3 - dziennik wychowanka
   dziennikDataOd: string = "1970-09-01T00:00:00+02:00",
-  dziennikDataDo: string = "1971-02-01T00:00:00+02:00".
+  dziennikDataDo: string = "1971-02-01T00:00:00+02:00",
   isUczen: boolean = true,
   isPrzedszkolak: boolean = false,
   isWychowanek: boolean = false,
@@ -35,7 +35,7 @@
 ```
 
 #### OcenyUstawienia
-```js
+```ts
 {
   isPunkty: boolean = false,
   isSrednia: boolean = false,
@@ -46,12 +46,12 @@
 ```
 
 #### OcenyPrzedmiot
-```js
+```ts
 {
   przedmiotNazwa: string = "Nazwa przedmiotu",
   pozycja: number = 0,
-  nauczyciele: array<string> = ["Nazwisko Imię [NI]"]
-  ocenyCzastkowe: array<OcenaCzastkowa> = [OcenaCzastkowa]
+  nauczyciele: array<string> = ["Nazwisko Imię [NI]"],
+  ocenyCzastkowe: array<OcenaCzastkowa> = [OcenaCzastkowa],
   egzaminFormaPraktyczna: null = null,
   egzaminFormaUstna: null = null,
   egzaminOcenaProponowana: null = null,
@@ -67,7 +67,7 @@
 ```
 
 #### OcenaCzastkowa
-```js
+```ts
 {
   wpis: string = "6 (komentarz)",
   dataOceny: string = "01.01.1970",
@@ -81,7 +81,7 @@
 ```
 
 #### OcenyResponse
-```js
+```ts
 {
   ocenyPrzedmioty: array<OcenyPrzedmiot> = [ocenyPrzedmiot],
   ustawienia: OcenaUstawienia = OcenaUstawienia
@@ -89,7 +89,7 @@
 ```
 
 #### OkresKlasyfikacyjny
-```js
+```ts
 {
   numerOkresu: number = 1,
   id: number = 0
@@ -97,7 +97,7 @@
 ```
 
 #### CacheUnit
-```js
+```ts
 {
   id: number = 0,
   symbol: string = "123456",
@@ -107,15 +107,15 @@
 ```
 
 #### Cache
-```js
+```ts
 {
   units: array<CacheUnit> = [CacheUnit],
-  linkst: array<null> = [null]
+  linkst: array<null> = [null],
   isStudent: boolean = true,
   isParent: boolean = false,
   isMenu: boolean = true,
-  isOffice365: boolean = ture,
-  isBetacomOn: boolean = ture,
+  isOffice365: boolean = true,
+  isBetacomOn: boolean = true,
   isNadzorOn: boolean = true,
   isUploadPhotosOn: boolean = false,
   isZglaszanieNieobecnosciOn: boolean = false,
@@ -128,7 +128,7 @@
 ```
 
 ### SprawdzianZadanie
-```js
+```ts
 {
   typ: number = 1,
   przedmiotNazwa: string = "Nazwa przedmiotu",
