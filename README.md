@@ -127,6 +127,17 @@
 }
 ```
 
+### SprawdzianZadanie
+```js
+{
+  typ: number = 1,
+  przedmiotNazwa: string = "Nazwa przedmiotu",
+  data: string = "1970-01-01T00:00:00+01:00",
+  hasAttachment: boolean = false,
+  id: number = 0
+}
+```
+
 ## Endpointy
 ### `[GET] api/Cache`
 
@@ -157,4 +168,12 @@ Pobiera oceny danego ucznia z danego dziennika
 #### Response
 
 `OcenyResponse`
+
+### `[GET] api/SprawdzianyZadaniaDomowe?key={keyDziennika}&dataOd={dataOd}&dataDo={dataDo}`
+
+Pobiera sprawdziany i zadania domowe
+
+#### Response
+
+`array<SprawdzianZadanie>`
 
