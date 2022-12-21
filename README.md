@@ -127,7 +127,7 @@
 }
 ```
 
-### SprawdzianZadanie
+#### SprawdzianZadanie
 ```ts
 {
   typ: number = 1,
@@ -135,6 +135,15 @@
   data: string = "1970-01-01T00:00:00+01:00",
   hasAttachment: boolean = false,
   id: number = 0
+}
+```
+
+#### WychowawcaTablica
+```ts
+{
+  imieNazwisko: str = "Imię Nazwisko",
+  isGlowny: boolean = true,
+  globalKeySkrzynka: string = "00000000-0000-0000-0000-000000000000"
 }
 ```
 
@@ -176,4 +185,13 @@ Pobiera sprawdziany i zadania domowe
 #### Response
 
 `array<SprawdzianZadanie>`
+
+### `[GET] api/WychowawcyTablica?key={keyDziennika}`
+
+Pobiera listę wychowawców
+
+#### Response
+
+`array<WychowawcaTablica>`
+
 
