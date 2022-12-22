@@ -1,5 +1,36 @@
 # API Vulcan UONET+ Uczeń+
-## Modele
+baseUrl: `https://uonetplus-uczenplus.{host}/{symbolGrupujacy}/{symbolJednostkiSprawozdawczej}`
+## Menu
+  - [api/Context](https://marioneq4958.github.io/uczenplus-docs/#api/context)
+  - [api/Oceny](https://marioneq4958.github.io/uczenplus-docs/#api/oceny)
+  - [api/OkresyKlasyfikacyjne](https://marioneq4958.github.io/uczenplus-docs/#api/okresyklasyfikacyjne)
+  - [api/Cache](https://marioneq4958.github.io/uczenplus-docs/#api/Cache)
+  - [api/SprawdzianyZadaniaDomowe](https://marioneq4958.github.io/uczenplus-docs/#api/sprawdzianyzadaniadomowe)
+  - [api/WychowawcyTablica](https://marioneq4958.github.io/uczenplus-docs/#api/wychowawcytablica)
+  - [api/WazneDzisiajTablica](https://marioneq4958.github.io/uczenplus-docs/#api/waznedzisiajtablica)
+  - [api/SzczesliwyNumerTablica](https://marioneq4958.github.io/uczenplus-docs/#api/szczesliwynumertablica)
+  - [api/PrzedmiotyUczniaWykresy](https://marioneq4958.github.io/uczenplus-docs/#api/przedmiotyuczniawykresy)
+  - [api/FrekwencjaStatystyki](https://marioneq4958.github.io/uczenplus-docs/#api/frekwencjastatystyki)
+## api/Context
+Pobiera listę dzienników uczniów
+
+### Request
+```js
+GET {baseUrl}/api/Context
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<Dziennik>
+```
+### Modele
 #### Dziennik
 ```ts
 {
@@ -33,7 +64,26 @@
   globalKeySkrzynka: string = "00000000-0000-0000-0000-000000000000"
 }
 ```
+## api/Oceny
+Pobiera oceny danego ucznia z danego dziennika
 
+### Request
+```js
+GET {baseUrl}/api/Oceny?key={keyDziennika}&idOkresKlasyfikacyjny={idOkresuKlasyfikacyjnego}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<OcenyResponse>
+```
+### Modele
 #### OcenyUstawienia
 ```ts
 {
@@ -87,7 +137,27 @@
   ustawienia: OcenaUstawienia = OcenaUstawienia
 }
 ```
+## api/OkresyKlasyfikacyjne
 
+Pobiera listę okresów klasyfikacyjnych (semestrów) danego dziennika
+
+### Request
+```js
+GET {baseUrl}/api/OkresyKlasyfikacyjne?idDziennik={idDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<OkresKlasyfikacyjny>
+```
+### Modele
 #### OkresKlasyfikacyjny
 ```ts
 {
@@ -96,6 +166,24 @@
 }
 ```
 
+## api/Cache
+### Request
+```js
+GET {baseUrl}/api/Cache
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+Cache
+```
+### Modele
 #### CacheUnit
 ```ts
 {
@@ -126,7 +214,26 @@
   isPodrecznikiOn: boolean = true
 }
 ```
+### api/SprawdzianyZadaniaDomowe
 
+Pobiera sprawdziany i zadania domowe
+
+#### Request
+```js
+GET {baseUrl}/api/SprawdzianyZadaniaDomowe?key={keyDziennika}&dataOd={dataOd}&dataDo={dataDo}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+#### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<SprawdzianZadanie>
+````
 #### SprawdzianZadanie
 ```ts
 {
@@ -137,7 +244,26 @@
   id: number = 0
 }
 ```
+### api/WychowawcyTablica
+Pobiera listę wychowawców
 
+### Request
+```js
+GET {baseUrl}/api/WychowawcyTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<WychowawcaTablica>
+````
+### Modele
 #### WychowawcaTablica
 ```ts
 {
@@ -146,7 +272,26 @@
   globalKeySkrzynka: string = "00000000-0000-0000-0000-000000000000"
 }
 ```
+### api/WazneDzisiajTablica
 
+Pobiera listę dzisiejszych wydarzeń
+
+### Request
+```js
+GET {baseUrl}/api/WazneDzisiajTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<WazneWydarzenieTablica>
+````
+### Modele
 #### WazneWydarzenieTablica
 ```ts
 {
@@ -155,7 +300,27 @@
   nazwa: string = "Nazwa przedmiotu - nazwa zdarzenia"
 }
 ```
+### api/SzczesliwyNumerTablica
 
+Pobiera dzisiejszy szczęsliwy numerek
+
+### Request
+```js
+GET {baseUrl}/api/SzczesliwyNumerTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+SzczesliwyNumerTablica
+````
+### Modele
 #### SzczesliwyNumerTablica
 ```ts
 {
@@ -163,7 +328,27 @@
   id: number = 0
 }
 ```
+### api/PrzedmiotyUczniaWykresy
 
+Pobiera listę przedmiotów do statystyk
+
+### Request
+```js
+GET {baseUrl}/api/PrzedmiotyUczniaWykresy?key={keyDziennika}&idOkresKlasyfikacyjny={idOkresuKlasyfikacyjnego}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<StatystykiOcenPrzedmiot>
+````
+### Modele
 #### StatystykiOcenPrzedmiot
 ```ts
 {
@@ -171,7 +356,27 @@
   id: number = 0
 }
 ```
+### api/FrekwencjaStatystyki
 
+Pobiera statystyki frekwencji
+
+### Request
+```js
+GET {baseUrl}/api/FrekwencjaStatystyki?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+StatystykiFrekwencjiResponse
+````
+### Modele
 #### StatystykaFrekwencjiMiesiac
 ```ts
 {
@@ -197,85 +402,3 @@
   statystyki: array<StatystykiKategoriaFrekwencji> = [StaystykiKategoriaFrekwencji]
 }
 ```
-
-## Endpointy
-### `[GET] api/Cache`
-
-#### Response
-
-`Cache`
-
-### `[GET] api/Context`
-
-Pobiera listę dzienników uczniów
-
-#### Response
-
-`array<Dziennik>`
-
-### `[GET] api/OkresyKlasyfikacyjne?idDziennik={idDziennika}`
-
-Pobiera listę okresów klasyfikacyjnych (semestrów) danego dziennika
-
-#### Response
-
-`array<OkresKlasyfikacyjny>`
-
-### `[GET] api/Oceny?key={keyDziennika}&idOkresKlasyfikacyjny={idOkresuKlasyfikacyjnego}`
-
-Pobiera oceny danego ucznia z danego dziennika
-
-#### Response
-
-`OcenyResponse`
-
-### `[GET] api/SprawdzianyZadaniaDomowe?key={keyDziennika}&dataOd={dataOd}&dataDo={dataDo}`
-
-Pobiera sprawdziany i zadania domowe
-
-#### Response
-
-`array<SprawdzianZadanie>`
-
-### `[GET] api/WychowawcyTablica?key={keyDziennika}`
-
-Pobiera listę wychowawców
-
-#### Response
-
-`array<WychowawcaTablica>`
-
-
-### `[GET] api/WazneDzisiajTablica?key={keyDziennika}`
-
-Pobiera listę dzisiejszych wydarzeń
-
-#### Response
-
-`array<WazneWydarzenieTablica>`
-
-
-### `[GET] api/SzczesliwyNumerTablica?key={keyDziennika}`
-
-Pobiera dzisiejszy szczęsliwy numerek
-
-#### Response
-
-`SzczesliwyNumerTablica`
-
-### `[GET] api/PrzedmiotyUczniaOcenyWykresy?key={keyDziennika}&idOkresKlasyfikacyjny={idOkresuKlasyfikacyjnego}`
-
-Pobiera listę przedmiotów do statystyk
-
-#### Response
-
-`array<StatystykiOcenPrzedmiot>`
-
-### `[GET] api/FrekwencjaStatystyki?key={keyDziennika}`
-
-Pobiera statystyki frekwencji
-
-#### Response
-
-`StatystykiFrekwencjiResponse`
-
