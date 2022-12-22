@@ -11,6 +11,25 @@ baseUrl: `https://uonetplus-uczenplus.{host}/{symbolGrupujacy}/{symbolJednostkiS
   - [api/SzczesliwyNumerTablica](https://marioneq4958.github.io/uczenplus-docs/#apiszczesliwynumertablica)
   - [api/PrzedmiotyUczniaWykresy](https://marioneq4958.github.io/uczenplus-docs/#apiprzedmiotyuczniawykresy)
   - [api/FrekwencjaStatystyki](https://marioneq4958.github.io/uczenplus-docs/#apifrekwencjastatystyki)
+  - [api/Zebrania](https://marioneq4958.github.io/uczenplus-docs/#apizebrania)
+  - [api/PodrecznikiLataSzkolne](https://marioneq4958.github.io/uczenplus-docs/#apipodrecznikilataszkolne)
+  - [api/PodrecznikiUcznia](https://marioneq4958.github.io/uczenplus-docs/#apipodrecznikiucznia)
+  - [api/ZarejestrowaneUrzadzenia](https://marioneq4958.github.io/uczenplus-docs/#apizarejestrowaneurzadzenia)
+  - [api/DostepOffice](https://marioneq4958.github.io/uczenplus-docs/#apidostepoffice)
+  - [api/Jadlospis](https://marioneq4958.github.io/uczenplus-docs/#apijadlospis)
+  - [api/JadlospisTablica](https://marioneq4958.github.io/uczenplus-docs/#apijadlospistablica)
+  - [api/OcenyTablica](https://marioneq4958.github.io/uczenplus-docs/#apiocenytablica)
+  - [api/EgzaminyKoncoweTablica](https://marioneq4958.github.io/uczenplus-docs/#apiegzaminykoncowetablica)
+  - [api/OgloszeniaTablica](https://marioneq4958.github.io/uczenplus-docs/#apiogloszeniatablica)
+  - [api/AnkietyTablica](https://marioneq4958.github.io/uczenplus-docs/#apiankietytablica)
+  - [api/FrekwencjaTablica](https://marioneq4958.github.io/uczenplus-docs/#apifrekwencjatablica)
+  - [api/UsprawiedliwieniaTablica](https://marioneq4958.github.io/uczenplus-docs/#apiusprawiedliwieniatablica)
+  - [api/Usprawiedliwienia](https://marioneq4958.github.io/uczenplus-docs/#apiusprawiedliwienia)
+  - [api/Osiagniecia](https://marioneq4958.github.io/uczenplus-docs/#apiosiagniecia)
+  - [api/Egzaminy](https://marioneq4958.github.io/uczenplus-docs/#apiegzaminy)
+  - [api/Uwagi](https://marioneq4958.github.io/uczenplus-docs/#apiuwagi)
+  - [api/DniWolne](https://marioneq4958.github.io/uczenplus-docs/#apidniwolne)
+  - [api/WiadomosciNieodczytane](https://marioneq4958.github.io/uczenplus-docs/#apiwiadomoscinieodczytane)
 
 ## api/Context
 Pobiera listę dzienników uczniów
@@ -215,11 +234,11 @@ Cache
   isPodrecznikiOn: boolean = true
 }
 ```
-### api/SprawdzianyZadaniaDomowe
+## api/SprawdzianyZadaniaDomowe
 
 Pobiera sprawdziany i zadania domowe
 
-#### Request
+### Request
 ```js
 GET {baseUrl}/api/SprawdzianyZadaniaDomowe?key={keyDziennika}&dataOd={dataOd}&dataDo={dataDo}
 ```
@@ -227,7 +246,7 @@ GET {baseUrl}/api/SprawdzianyZadaniaDomowe?key={keyDziennika}&dataOd={dataOd}&da
 Content-Type: application/json; charset=utf-8
 ```
 
-#### Response
+### Response
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
@@ -235,6 +254,7 @@ Content-Type: application/json; charset=utf-8
 ```js
 array<SprawdzianZadanie>
 ````
+### Modele
 #### SprawdzianZadanie
 ```ts
 {
@@ -245,7 +265,7 @@ array<SprawdzianZadanie>
   id: number = 0
 }
 ```
-### api/WychowawcyTablica
+## api/WychowawcyTablica
 Pobiera listę wychowawców
 
 ### Request
@@ -273,7 +293,7 @@ array<WychowawcaTablica>
   globalKeySkrzynka: string = "00000000-0000-0000-0000-000000000000"
 }
 ```
-### api/WazneDzisiajTablica
+## api/WazneDzisiajTablica
 
 Pobiera listę dzisiejszych wydarzeń
 
@@ -301,7 +321,7 @@ array<WazneWydarzenieTablica>
   nazwa: string = "Nazwa przedmiotu - nazwa zdarzenia"
 }
 ```
-### api/SzczesliwyNumerTablica
+## api/SzczesliwyNumerTablica
 
 Pobiera dzisiejszy szczęsliwy numerek
 
@@ -357,7 +377,7 @@ array<StatystykiOcenPrzedmiot>
   id: number = 0
 }
 ```
-### api/FrekwencjaStatystyki
+## api/FrekwencjaStatystyki
 
 Pobiera statystyki frekwencji
 
@@ -403,3 +423,356 @@ StatystykiFrekwencjiResponse
   statystyki: array<StatystykiKategoriaFrekwencji> = [StaystykiKategoriaFrekwencji]
 }
 ```
+
+## api/Zebrania
+
+Pobiera listę zebrań dla rodziców
+
+### Request
+```js
+GET {baseUrl}/api/Zebrania?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<Zebranie>
+````
+### Modele
+#### Zebranie
+```ts
+{
+  dataCzas: string = "1970-01-01T00:00:00+01:00", 
+  sala: string = "1",
+  opis: string = "Opis zebrania",
+  zebranieOnline: null = null,
+  obecniNaZebraniu: string = "",
+  id: number = 0
+}
+```
+
+## api/PodrecznikiLataSzkolne
+
+### Request
+```js
+GET {baseUrl}/api/PodrecznikiLataSzkolne?idDziennik={idDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<PodrecznikRokSzkolny>
+````
+### Modele
+#### PodrecznikiRokSzkolny
+```ts
+{
+  nazwa: string = "1970/1971",
+  id: number = 1970
+}
+```
+
+## api/PodrecznikiUcznia
+
+Niepełne dane, jeśli masz pełne response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/PodrecznikiUcznia?idDziennik={idDziennika}&rokSzkolny=1970
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+### Response
+```http
+Content-Type: application/json; charset=utf-8
+```
+```js
+PodrecznikiResponse
+```
+### Modele
+#### PodrecznikiResponse
+```ts
+{
+  isZatwierdzone: boolean = false,
+  podreczniki: array<null> = []
+}
+```
+
+## api/ZarejestrowaneUrzadzenia
+
+Pobiera listę zarejestrowanych urządzeń mobilnych
+
+### Request
+```js
+GET {baseUrl}/api/ZarejestrowaneUrządzenia
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+array<ZarejestrowaneUrzadzenie>
+````
+### Modele
+#### ZarejestrowaneUrzadzenie
+```ts
+{
+  nazwa: string = "1970/1971",
+  dataCertyfikatu: string = "1970-01-01T00:00:00+01:00",
+  id: number = 0
+}
+```
+
+## api/DostepOffice
+
+
+### Request
+```js
+GET {baseUrl}/api/DostepOffice?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+DaneDostepOffice
+````
+### Modele
+#### DaneDostepOffice
+```ts
+{
+  login: string = "login",
+  pokazLogin: boolean = true,
+  haslo: string = "haslo",
+  pokazHaslo: boolean = true
+}
+```
+
+## api/Jadlospis
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/Jadlospis?dataOd={dataOd}&dataDo={dataDo}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/JadlospisTablica
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/JadlospisTablica
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/OcenyTablica
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/OcenyTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/EgzaminyKoncoweTablica
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/EgzaminyKoncoweTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/OgloszeniaTablica
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/OgloszeniaTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/AnkietyTablica
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/AnkietyTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/FrekwencjaTablica
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/FrekwencjaTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/UsprawiedliwieniaTablica
+
+Niepełne dane, jeśli masz pełne response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/UsprawiedliwieniaTablica?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+### Response
+```http
+Content-Type: application/json; charset=utf-8
+```
+```js
+UsprawiedliwieniaTablicaResponse
+```
+### Modele
+#### UsprawiedliwieniaTablicaResponse
+```ts
+{
+  usprawiedliwieniaAktywne: boolean = true,
+  usprawiedliwienia: array<null> = []
+}
+```
+
+## api/Usprawiedliwienia
+
+Niepełne dane, jeśli masz pełne response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/Usprawiedliwienia?key={keyDziennika}&dataOd={dataOd}&dataDo={dataDo}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+### Response
+```http
+Content-Type: application/json; charset=utf-8
+```
+```js
+UsprawiedliwieniaResponse
+```
+### Modele
+#### UsprawiedliwieniaResponse
+```ts
+{
+  usprawiedliwieniaAktywne: boolean = true,
+  usprawiedliwienia: array<null> = []
+}
+```
+
+## api/Osiagniecia
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/Osiagniecia?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/Egzaminy
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/Egzaminy?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/Uwagi
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/Uwagi?key={keyDziennika}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+
+## api/DniWolne
+
+Brak danych, jeśli masz response tego endpointa [utwórz issue](https://github.com/Marioneq4958/uczenplus-docs/issues).
+### Request
+```js
+GET {baseUrl}/api/DniWolne?dataOd={dataOd}&dataDo={dataDo}
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+## api/WiadomosciNieodczytane
+
+Pobiera ilość nieodczytanych wiadomości
+
+### Request
+```js
+GET {baseUrl}/api/JadlospisTablica
+```
+```http
+Content-Type: application/json; charset=utf-8
+```
+
+### Response
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+```
+```js
+LiczbaNieodczytanychWiadomosci
+````
+
+### Modele
+#### LiczbaNieodczytanychWiadomosci
+```ts
+{
+  liczbaWiadomosciNieodczytanych: number = 0
+}
+```
+
+
+
+
