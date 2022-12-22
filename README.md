@@ -172,6 +172,32 @@
 }
 ```
 
+#### StatystykaFrekwencjiMiesiac
+```ts
+{
+  miesiac: number = 1,
+  wartosc: number = 0
+}
+```
+
+#### StatystykiKategoriaFrekwencji
+```ts
+{
+  kategoriaFrekwencji: number = 1, // 1 - o, 2 - n, 3 - nu, 4 - ns, 5 - s, 6 - su, 7 - z
+  miesiace: array<StatystykaFrekwencjiMiesiac> = [StatystykaFrekwencjiMiesiac],
+  okresy: array<number> = [1, 1], // ilość wpisów danej kategorii w danym okresie klasyfikacyjnym,
+  razem: number = 2 // ilość wpisów danej kategorii w całym roku szkolnym
+}
+```
+
+#### StatystykiFrekwencjiResponse
+```ts
+{
+  podsumowanie: number = 99.03,
+  statystyki: array<StatystykiKategoriaFrekwencji> = [StaystykiKategoriaFrekwencji]
+}
+```
+
 ## Endpointy
 ### `[GET] api/Cache`
 
@@ -244,4 +270,12 @@ Pobiera listę przedmiotów do statystyk
 #### Response
 
 `array<StatystykiOcenPrzedmiot>`
+
+### `[GET] api/FrekwencjaStatystyki?key={keyDziennika}`
+
+Pobiera statystyki frekwencji
+
+#### Response
+
+`StatystykiFrekwencjiResponse`
 
