@@ -156,6 +156,14 @@
 }
 ```
 
+#### SzczesliwyNumerTablica
+```ts
+{
+  numer: number = 1,
+  id: number = 0
+}
+```
+
 ## Endpointy
 ### `[GET] api/Cache`
 
@@ -211,4 +219,13 @@ Pobiera listę dzisiejszych wydarzeń
 #### Response
 
 `array<WazneWydarzenieTablica>`
+
+
+### `[GET] api/SzczesliwyNumerTablica?key={keyDziennika}`
+
+Pobiera dzisiejszy szczęsliwy numerek
+
+#### Response
+
+`SzczesliwyNumerTablica`
 
