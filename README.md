@@ -147,6 +147,15 @@
 }
 ```
 
+#### WazneWydarzenieTablica
+```ts
+{
+  przedmiot: string = "Nazwa przedmiotu",
+  nazwaZdarzenia: string = "nazwa zdarzenia",
+  nazwa: string = "Nazwa przedmiotu - nazwa zdarzenia"
+}
+```
+
 ## Endpointy
 ### `[GET] api/Cache`
 
@@ -194,4 +203,12 @@ Pobiera listę wychowawców
 
 `array<WychowawcaTablica>`
 
+
+### `[GET] api/WazneDzisiajTablica?key={keyDziennika}`
+
+Pobiera listę dzisiejszych wydarzeń
+
+#### Response
+
+`array<WazneWydarzenieTablica>`
 
