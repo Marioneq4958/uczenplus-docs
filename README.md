@@ -164,6 +164,14 @@
 }
 ```
 
+#### StatystykiOcenPrzedmiot
+```ts
+{
+  nazwa: string = "Nazwa przedmiotu",
+  id: number = 0
+}
+```
+
 ## Endpointy
 ### `[GET] api/Cache`
 
@@ -228,4 +236,12 @@ Pobiera dzisiejszy szczęsliwy numerek
 #### Response
 
 `SzczesliwyNumerTablica`
+
+### `[GET] api/PrzedmiotyUczniaOcenyWykresy?key={keyDziennika}&idOkresKlasyfikacyjny={idOkresuKlasyfikacyjnego}`
+
+Pobiera listę przedmiotów do statystyk
+
+#### Response
+
+`array<StatystykiOcenPrzedmiot>`
 
